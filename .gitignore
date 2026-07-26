@@ -1,0 +1,33 @@
+# Visual Studio
+.vs/
+.vscode/
+
+# Build
+bin/
+obj/
+
+# Rider
+.idea/
+
+# User files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Test Results
+TestResults/
+
+# NuGet
+*.nupkg
+
+# Logs
+*.log
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# Environment
+.env
+.env.local
