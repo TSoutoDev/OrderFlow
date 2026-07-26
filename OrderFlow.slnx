@@ -1,16 +1,15 @@
 <Solution>
-  <Folder Name="/docs/" />
   <Folder Name="/src/">
-    <Project Path="OrderFlow.Api/OrderFlow.Api.csproj" />
-    <Project Path="OrderFlow.Application/OrderFlow.Application.csproj" />
-    <Project Path="OrderFlow.Contracts/OrderFlow.Contracts.csproj" />
-    <Project Path="OrderFlow.Domain/OrderFlow.Domain.csproj" />
-    <Project Path="OrderFlow.Infrastructure/OrderFlow.Infrastructure.csproj" />
-    <Project Path="OrderFlow.Web/OrderFlow.Web.csproj" />
-    <Project Path="OrderFlow.Worker/OrderFlow.Worker.csproj" />
+    <Project Path="src/OrderFlow.Api/OrderFlow.Api.csproj" />
+    <Project Path="src/OrderFlow.Application/OrderFlow.Application.csproj" />
+    <Project Path="src/OrderFlow.Contracts/OrderFlow.Contracts.csproj" />
+    <Project Path="src/OrderFlow.Domain/OrderFlow.Domain.csproj" />
+    <Project Path="src/OrderFlow.Infrastructure/OrderFlow.Infrastructure.csproj" />
+    <Project Path="src/OrderFlow.Web/OrderFlow.Web.csproj" />
+    <Project Path="src/OrderFlow.Worker/OrderFlow.Worker.csproj" />
   </Folder>
   <Folder Name="/tests/">
-    <Project Path="OrderFlow.IntegrationTests/OrderFlow.IntegrationTests.csproj" />
-    <Project Path="OrderFlow.UnitTests/OrderFlow.UnitTests.csproj" />
+    <Project Path="tests/OrderFlow.IntegrationTests/OrderFlow.IntegrationTests.csproj" />
+    <Project Path="tests/OrderFlow.UnitTests/OrderFlow.UnitTests.csproj" />
   </Folder>
 </Solution>
