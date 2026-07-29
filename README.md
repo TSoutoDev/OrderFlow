@@ -2,8 +2,8 @@
 
 
 
-Sistema de processamento de pedidos desenvolvido com .NET, DDD e Clean Architecture.
-
+Sistema de processamento de pedidos desenvolvido com .NET 10, Domain-Driven Design (DDD) e Clean Architecture.
+🚧 Status: Em desenvolvimento (Sprint 2 concluída)
 
 
 > Projeto de portfólio criado para simular uma aplicação moderna, evoluindo sprint a sprint e aplicando boas práticas de arquitetura, testes e desenvolvimento de software.
@@ -70,40 +70,20 @@ O OrderFlow tem como objetivo demonstrar a construção de uma aplicação real 
 
 \## 📂 Estrutura da Solução
 
-
-
 ```text
-
 src/
-
-&#x20;├── OrderFlow.Api
-
-&#x20;├── OrderFlow.Application
-
-&#x20;├── OrderFlow.Contracts
-
-&#x20;├── OrderFlow.Domain
-
-&#x20;├── OrderFlow.Infrastructure
-
-&#x20;├── OrderFlow.Web
-
-&#x20;└── OrderFlow.Worker
-
-
+├── OrderFlow.Api
+├── OrderFlow.Application
+├── OrderFlow.Contracts
+├── OrderFlow.Domain
+├── OrderFlow.Infrastructure
+├── OrderFlow.Web
+└── OrderFlow.Worker
 
 tests/
-
-&#x20;├── OrderFlow.UnitTests
-
-&#x20;└── OrderFlow.IntegrationTests
-
+├── OrderFlow.UnitTests
+└── OrderFlow.IntegrationTests
 ```
-
-
-
-\---
-
 
 
 \## 🗺️ Roadmap
@@ -166,7 +146,7 @@ A camada de domínio foi concluída com:
 
 \*\*Tiago Souto\*\*
 
-\- 💼 LinkedIn: https://linkedin.com/in/seu-perfil
+\- 💼 LinkedIn: https://linkedin.com/in/t-souto
 
-\- 💻 GitHub: https://github.com/seuusuario
+\- 💻 GitHub: https://github.com/TSoutoDev
 
