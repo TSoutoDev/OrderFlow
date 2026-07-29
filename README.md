@@ -3,7 +3,7 @@
 
 
 Sistema de processamento de pedidos desenvolvido com .NET 10, Domain-Driven Design (DDD) e Clean Architecture.
-🚧 Status: Em desenvolvimento (Sprint 2 concluída)
+\🚧 Status: Em desenvolvimento (Sprint 2 concluída)
 
 
 > Projeto de portfólio criado para simular uma aplicação moderna, evoluindo sprint a sprint e aplicando boas práticas de arquitetura, testes e desenvolvimento de software.
