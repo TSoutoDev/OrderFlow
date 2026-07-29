@@ -18,8 +18,7 @@ namespace OrderFlow.Domain.Common
         {
             if(id == Guid.Empty)
             {
-                throw new ArgumentNullException(
-                "O identificador da entidade nao pode ser vazio.", nameof(id));
+                throw new ArgumentNullException( "O identificador da entidade nao pode ser vazio.", nameof(id));
             }
 
             Id = id;
