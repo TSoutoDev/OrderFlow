@@ -2,10 +2,6 @@
 using OrderFlow.Domain.Enums;
 using OrderFlow.Domain.Exceptions;
 using OrderFlow.Domain.ValueObjects;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using static System.Net.WebRequestMethods;
 
 namespace OrderFlow.Domain.Entities
 {
@@ -140,9 +136,10 @@ namespace OrderFlow.Domain.Entities
         //Somente pedidos em processamento podem ser marcados como falha.
         public void Fail()
         {
-            if (Status != OrderStatus.Pending)
+            if (Status != OrderStatus.Processing)
             {
-                throw new DomainException("Somente pedidos em processamento podem ser marcados como falha.");
+                throw new DomainException(
+                    "Somente pedidos em processamento podem ser marcados como falha.");
             }
 
             Status = OrderStatus.Failed;

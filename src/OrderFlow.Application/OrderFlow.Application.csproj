@@ -7,17 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Behaviors\" />
-    <Folder Include="Commands\Orders\CreateOrder\" />
     <Folder Include="Commands\Orders\UpdateOrderStatus\" />
-    <Folder Include="DTOs\" />
-    <Folder Include="Handlers\" />
-    <Folder Include="Interfaces\" />
     <Folder Include="Mappings\" />
-    <Folder Include="Queries\Orders\GetOrderById\" />
     <Folder Include="Queries\Orders\GetOrders\" />
-    <Folder Include="Validators\" />
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
+    <PackageReference Include="MediatR" Version="14.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OrderFlow.Domain\OrderFlow.Domain.csproj" />
   </ItemGroup>
 
 </Project>
