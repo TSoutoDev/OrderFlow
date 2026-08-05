@@ -25,4 +25,9 @@ public sealed class OrderRepository : IOrderRepository
             .Include(order => order.Items)
             .FirstOrDefaultAsync(order => order.Id == id, cancellationToken);
     }
+
+    public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        await _context.SaveChangesAsync(cancellationToken);
+    }
 }

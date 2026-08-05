@@ -1,7 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Update.Internal;
+using OrderFlow.Application.Commands.Orders.CancelOrder;
 using OrderFlow.Application.Commands.Orders.CreateOrder;
+using OrderFlow.Application.Commands.Orders.UpdateOrder;
 using OrderFlow.Application.Queries.Orders.GetOrderById;
 
 namespace OrderFlow.Api.Controllers
@@ -31,12 +34,33 @@ namespace OrderFlow.Api.Controllers
         {
             var order = await _mediator.Send(new GetOrderByIdQuery(id), cancellationToken);
 
-            if(order == null)
+            if (order == null)
             {
                 return NotFound();
-            }   
+            }
 
             return Ok(order);
         }
+
+        [HttpPut("{id:guid}")]
+        public async Task<IActionResult> Update(Guid id, UpdateOrderCommand command, CancellationToken cancellationToken)
+        {
+            command = command with { Id = id };
+
+            await _mediator.Send(command, cancellationToken);
+
+            return NoContent();
+        }
+
+        [HttpPatch("{id:guid}")]
+        public async Task<IActionResult> Cancel(Guid id, CancellationToken cancellationToken)
+        {
+            var command = new CancelOrderCommand(id);
+
+            await _mediator.Send(command, cancellationToken);
+
+            return NoContent();
+        }
+
     }
 }

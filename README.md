@@ -3,17 +3,14 @@
 ![.NET](https://img.shields.io/badge/.NET-10-512BD4?style=for-the-badge&logo=dotnet)
 ![C#](https://img.shields.io/badge/C%23-13-239120?style=for-the-badge&logo=csharp)
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge&logo=microsoftsqlserver)
-![Entity Framework](https://img.shields.io/badge/EF%20Core-512BD4?style=for-the-badge)
+![Entity Framework Core](https://img.shields.io/badge/Entity%20Framework%20Core-512BD4?style=for-the-badge)
 ![MediatR](https://img.shields.io/badge/MediatR-CQRS-blue?style=for-the-badge)
 ![FluentValidation](https://img.shields.io/badge/FluentValidation-Validation-success?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-Sistema de processamento de pedidos desenvolvido em **.NET 10**, aplicando conceitos modernos de arquitetura como **Clean Architecture**, **Domain-Driven Design (DDD)**, **CQRS**, **SOLID** e **Entity Framework Core**.
+Sistema de processamento de pedidos desenvolvido em **.NET 10**, utilizando **Clean Architecture**, **Domain-Driven Design (DDD)**, **CQRS**, **MediatR**, **Entity Framework Core** e **SQL Server**.
 
-Sistema de processamento de pedidos desenvolvido com .NET 10, Domain-Driven Design (DDD) e Clean Architecture.
-\#🚧 Status: Em desenvolvimento (Sprint 2 concluída)
-=======
-Este projeto faz parte do meu portfólio e está sendo desenvolvido de forma incremental, simulando um sistema utilizado em ambiente corporativo.
+Este projeto faz parte do meu portfólio e está sendo desenvolvido de forma incremental, simulando a evolução de uma aplicação utilizada em ambiente corporativo.
 
 ---
 
@@ -23,9 +20,10 @@ Este projeto faz parte do meu portfólio e está sendo desenvolvido de forma inc
 
 ### Sprint concluídas
 
-- ✅ Sprint 1 — Estrutura da solução
+- ✅ Sprint 1 — Fundação da solução
 - ✅ Sprint 2 — Camada de Domínio
 - ✅ Sprint 3 — Casos de Uso + Persistência + API REST
+- ✅ Sprint 4 — Atualização e Cancelamento de Pedidos
 
 ---
 
@@ -33,76 +31,55 @@ Este projeto faz parte do meu portfólio e está sendo desenvolvido de forma inc
 
 O objetivo do OrderFlow é demonstrar a construção de uma API moderna utilizando boas práticas de arquitetura e desenvolvimento de software.
 
-Durante sua evolução serão aplicados conceitos como:
+Durante sua evolução estão sendo aplicados conceitos como:
 
 - Clean Architecture
 - Domain-Driven Design (DDD)
 - CQRS
 - SOLID
+- Repository Pattern
+- MediatR
+- FluentValidation
 - Entity Framework Core
 - SQL Server
 - Testes Unitários
 - Mensageria
 - Worker Service
 - Docker
-- Azure
 
 ---
-	
-O OrderFlow tem como objetivo demonstrar a construção de uma aplicação real utilizando conceitos como:
 
-
-
-\- Domain-Driven Design (DDD)
-
-\- Clean Architecture
-
-\- Testes Unitários
-
-\- Processamento Assíncrono
-
-\- Mensageria
-
-\- Arquitetura em Camadas
-
-
-
-\---
-
-
-
-\## 🛠️ Tecnologias
-
-
-
-\- .NET 10
-
-\- C#
-
-\- xUnit
-
-\- Entity Framework Core \*(em desenvolvimento)\*
-
-\- PostgreSQL \*(em desenvolvimento)\*
-
-\- RabbitMQ \*(em desenvolvimento)\*
-
-\- MongoDB \*(em desenvolvimento)\*
-
-\- SignalR \*(em desenvolvimento)\*
-
-\- Docker \*(em desenvolvimento)\*
-
-
-
-\---
-
-
-
-\## 📂 Estrutura da Solução
+# 🏗 Arquitetura
 
 ```text
-src/
+                    ASP.NET Core API
+                           │
+                     Controllers
+                           │
+                     MediatR (CQRS)
+                           │
+        Commands                      Queries
+             │                           │
+             └──────────────┬────────────┘
+                            │
+                  Application Layer
+                            │
+                     Domain Layer
+                            │
+                Infrastructure Layer
+                            │
+                 Entity Framework Core
+                            │
+                      SQL Server
+```
+
+---
+
+# 📂 Estrutura da Solução
+
+```text
+src
+│
 ├── OrderFlow.Api
 ├── OrderFlow.Application
 ├── OrderFlow.Contracts
@@ -111,58 +88,17 @@ src/
 ├── OrderFlow.Web
 └── OrderFlow.Worker
 
-tests/
-├── OrderFlow.UnitTests
-└── OrderFlow.IntegrationTests
-=======
-# 🏗 Arquitetura
-
-```
-                    ASP.NET Core API
-                           │
-                    Controllers
-                           │
-                      MediatR (CQRS)
-                           │
-          Commands                 Queries
-                │                    │
-                └──────────┬─────────┘
-                           │
-                    Application Layer
-                           │
-                       Domain Layer
-                           │
-                  Infrastructure Layer
-                           │
-                 Entity Framework Core
-                           │
-                      SQL Server
-```
-
----
-
-\## 🗺️ Roadmap
-=======
-# 📂 Estrutura do Projeto
-
-```
-src
-│
-├── OrderFlow.Api
-├── OrderFlow.Application
-├── OrderFlow.Domain
-└── OrderFlow.Infrastructure
-
 tests
 │
-└── OrderFlow.UnitTests
+├── OrderFlow.UnitTests
+└── OrderFlow.IntegrationTests
 ```
 
 ---
 
-# 🔄 Fluxo de uma requisição
+# 🔄 Fluxo de uma Requisição
 
-```
+```text
 HTTP Request
       │
       ▼
@@ -195,18 +131,26 @@ SQL Server
 
 - ✅ Criar pedido
 - ✅ Consultar pedido por Id
-- ✅ Persistência em SQL Server
+- ✅ Atualizar pedido
+- ✅ Cancelar pedido
 
-## Validação
+## Domínio
 
+- ✅ Aggregate Root
+- ✅ Entities
+- ✅ Value Objects
+- ✅ Regras de negócio
+- ✅ Máquina de estados
+
+## Application
+
+- ✅ CQRS
+- ✅ MediatR
+- ✅ Commands
+- ✅ Queries
+- ✅ Handlers
 - ✅ FluentValidation
-- ✅ Pipeline Behavior (MediatR)
-
-## API
-
-- ✅ Swagger
-- ✅ Controller REST
-- ✅ Dependency Injection
+- ✅ Pipeline Behavior
 
 ## Infraestrutura
 
@@ -214,47 +158,29 @@ SQL Server
 - ✅ SQL Server
 - ✅ Repository Pattern
 
-## Tratamento de Erros
+## API
 
+- ✅ ASP.NET Core Web API
+- ✅ Swagger
+- ✅ Controllers REST
+
+## Tratamento de Exceções
+
+- ✅ ValidationException
+- ✅ DomainException
+- ✅ KeyNotFoundException
 - ✅ Middleware Global
-- ✅ Validação padronizada
-- ✅ Respostas HTTP padronizadas
 
 ---
 
 # 📡 Endpoints
 
-## Criar Pedido
-
-```
-POST /api/orders
-```
-
-### Exemplo
-
-```json
-{
-  "orderNumber": "ORD-0001",
-  "customerId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  "items": [
-    {
-      "productId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "productName": "Notebook Dell",
-      "quantity": 2,
-      "unitPrice": 5500,
-      "currency": "BRL"
-    }
-  ]
-}
-```
-
----
-
-## Consultar Pedido
-
-```
-GET /api/orders/{id}
-```
+| Método | Endpoint | Descrição |
+|---------|----------|-----------|
+| POST | `/api/orders` | Criar pedido |
+| GET | `/api/orders/{id}` | Consultar pedido |
+| PUT | `/api/orders/{id}` | Atualizar pedido |
+| PATCH | `/api/orders/{id}/cancel` | Cancelar pedido |
 
 ---
 
@@ -274,8 +200,8 @@ GET /api/orders/{id}
 
 # 📚 Conceitos Aplicados
 
-| Conceito | Implementação |
-|----------|---------------|
+| Conceito | Status |
+|----------|:------:|
 | Clean Architecture | ✅ |
 | Domain-Driven Design | ✅ |
 | CQRS | ✅ |
@@ -291,9 +217,9 @@ GET /api/orders/{id}
 
 ---
 
-# 🚀 Como executar
+# 🚀 Como Executar
 
-## Clonar o projeto
+## Clonar o repositório
 
 ```bash
 git clone https://github.com/TSoutoDev/OrderFlow.git
@@ -313,10 +239,6 @@ dotnet restore
 
 ## Executar as migrations
 
-\- 💼 LinkedIn: https://linkedin.com/in/t-souto
-
-\- 💻 GitHub: https://github.com/TSoutoDev
-=======
 ```bash
 dotnet ef database update
 ```
@@ -343,9 +265,9 @@ https://localhost:xxxx/swagger
 
 ## Sprint 2
 
-- ✅ Entidades
-- ✅ Value Objects
 - ✅ Aggregate Root
+- ✅ Entities
+- ✅ Value Objects
 - ✅ Regras de negócio
 
 ## Sprint 3
@@ -355,14 +277,15 @@ https://localhost:xxxx/swagger
 - ✅ FluentValidation
 - ✅ Entity Framework Core
 - ✅ SQL Server
-- ✅ Swagger
 - ✅ Middleware Global
 - ✅ API REST
 
 ## Sprint 4
 
-- ⏳ Atualização de pedidos
-- ⏳ Cancelamento de pedidos
+- ✅ Atualização de pedidos
+- ✅ Cancelamento de pedidos
+- ✅ Tratamento de DomainException
+- ✅ Tratamento de KeyNotFoundException
 
 ## Sprint 5
 
@@ -374,32 +297,25 @@ https://localhost:xxxx/swagger
 
 ## Sprint 7
 
-- ⏳ MongoDB
+- ⏳ SignalR
 
 ## Sprint 8
 
-- ⏳ SignalR
+- ⏳ Docker
 
 ## Sprint 9
 
-- ⏳ Docker
-
-## Sprint 10
-
-- ⏳ Deploy Azure
+- ⏳ Deploy
 
 ---
 
 # 🎯 Próximos Passos
 
-- Atualizar pedido
-- Cancelar pedido
-- Publicação de eventos
-- Processamento assíncrono
-- Cache
-- Observabilidade
-- Docker
-- Deploy na Azure
+- Publicação de eventos com RabbitMQ
+- Processamento assíncrono com Worker Service
+- Comunicação em tempo real com SignalR
+- Containerização com Docker
+- Deploy
 
 ---
 
@@ -407,13 +323,13 @@ https://localhost:xxxx/swagger
 
 ## Tiago Souto
 
-Software Developer | .NET | C# | ASP.NET Core | SQL Server | Azure | Clean Architecture | DDD | CQRS
+Software Developer | .NET | C# | ASP.NET Core | SQL Server | Clean Architecture | DDD | CQRS
 
-🔗 LinkedIn
+🔗 **LinkedIn**
 
 https://linkedin.com/in/t-souto
 
-💻 GitHub
+💻 **GitHub**
 
 https://github.com/TSoutoDev
 

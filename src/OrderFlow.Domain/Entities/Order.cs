@@ -75,6 +75,28 @@ namespace OrderFlow.Domain.Entities
             }
             _items.Remove(item);
         }
+
+        public void Update(string orderNumber, Guid customerId)
+        {
+            EnsureOrderCanBeChanged();// verifica se o estado do pedido permite alteração
+            ValidateOrderNumber(orderNumber);
+            ValidateCustomerId(customerId);
+
+            OrderNumber = orderNumber.Trim();
+            CustomerId = customerId;
+
+        }
+
+        public void Cancel()
+        {
+            if(Status != OrderStatus.Pending)
+            {
+                throw new DomainException("Somente pedidos pendentes podem ser cancelados.");
+            }
+
+            Status = OrderStatus.Cancelled;
+        }
+
         public void ChangeItemQuantity(Guid itemId, int quantity)
         {
             EnsureOrderCanBeChanged();
@@ -154,5 +176,7 @@ namespace OrderFlow.Domain.Entities
             }
             Status = OrderStatus.DeadLetter;
         }
+
+       
     }
 }

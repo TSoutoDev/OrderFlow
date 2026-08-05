@@ -7,5 +7,6 @@
         Completed = 3,          //O pedido passou por todas as etapas com sucesso.
         Failed = 4,             //O pedido apresentou algum erro durante o processamento.
         DeadLetter = 5,         //O pedido falhou mesmo depois das tentativas previstas.
+        Cancelled = 6,          //O pedido cancelado
     }
 }

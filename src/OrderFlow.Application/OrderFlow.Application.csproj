@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\Orders\UpdateOrderStatus\" />
     <Folder Include="Mappings\" />
     <Folder Include="Queries\Orders\GetOrders\" />
     <Folder Include="Services\" />
