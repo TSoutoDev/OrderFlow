@@ -24,6 +24,7 @@ Este projeto faz parte do meu portfólio e está sendo desenvolvido de forma inc
 - ✅ Sprint 2 — Camada de Domínio
 - ✅ Sprint 3 — Casos de Uso + Persistência + API REST
 - ✅ Sprint 4 — Atualização e Cancelamento de Pedidos
+- ✅ Sprint 5 — Integração com RabbitMQ
 
 ---
 
@@ -67,10 +68,12 @@ Durante sua evolução estão sendo aplicados conceitos como:
                      Domain Layer
                             │
                 Infrastructure Layer
-                            │
-                 Entity Framework Core
-                            │
-                      SQL Server
+                  │                    │
+                  ▼                    ▼
+        Entity Framework Core      RabbitMQ
+                  │                    │
+                  ▼                    ▼
+             SQL Server        order-created
 ```
 
 ---
@@ -108,19 +111,17 @@ Controller
 ValidationBehavior
       │
       ▼
-Command / Query
+Command
       │
       ▼
 Handler
       │
-      ▼
-Repository
+      ├──────────────► SQL Server
       │
-      ▼
-Entity Framework Core
-      │
-      ▼
-SQL Server
+      └──────────────► RabbitMQ
+                             │
+                             ▼
+                    order-created
 ```
 
 ---
@@ -171,6 +172,13 @@ SQL Server
 - ✅ KeyNotFoundException
 - ✅ Middleware Global
 
+## Mensageria
+
+- ✅ RabbitMQ
+- ✅ Publicação de eventos de integração
+- ✅ OrderCreatedIntegrationEvent
+- ✅ Serialização JSON
+- ✅ Filas persistentes
 ---
 
 # 📡 Endpoints
@@ -195,6 +203,7 @@ SQL Server
 - FluentValidation
 - Swagger
 - xUnit
+- RabbitMQ
 
 ---
 
@@ -214,6 +223,8 @@ SQL Server
 | Middleware | ✅ |
 | FluentValidation | ✅ |
 | Entity Framework Core | ✅ |
+| Event Driven Architecture |✅
+| Integration Events |✅
 
 ---
 
@@ -289,11 +300,16 @@ https://localhost:xxxx/swagger
 
 ## Sprint 5
 
-- ⏳ RabbitMQ
+- ✅ RabbitMQ
+- ✅ Eventos de Integração
+- ✅ Publicação de Mensagens
+- ✅ Configuração via IOptions
 
 ## Sprint 6
 
 - ⏳ Worker Service
+- ⏳ Consumo de Mensagens
+- ⏳ Processamento Assíncrono
 
 ## Sprint 7
 
@@ -311,8 +327,8 @@ https://localhost:xxxx/swagger
 
 # 🎯 Próximos Passos
 
-- Publicação de eventos com RabbitMQ
-- Processamento assíncrono com Worker Service
+- Consumo de eventos com Worker Service
+- Processamento assíncrono
 - Comunicação em tempo real com SignalR
 - Containerização com Docker
 - Deploy
